@@ -8,13 +8,8 @@ import {ReactComponent as CrwbLogo} from '../../assets/crown.svg'
 import './navigation.styles.scss'
 
 const Navigation = () => {
-    const {currentUser, setCurrentUser} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
-    const handleSignOut = async () => {
-        console.log(await signOutUser())
-        console.log('user signed out')
-        setCurrentUser(null)
-    }
 
     return(
         <Fragment>
@@ -27,7 +22,7 @@ const Navigation = () => {
                         Shop
                     </Link>
                     {currentUser ? (
-                        <span className="nav-link" onClick={handleSignOut}>Sign Out</span>
+                        <span className="nav-link" onClick={signOutUser}>Sign Out</span>
                     ):(
                         <Link className="nav-link" to='/auth'>
                             Sign In

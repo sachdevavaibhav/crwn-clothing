@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { setCategoriesMap } from '../../store/categories/categories.action'
+import { setCategories } from '../../store/categories/categories.action'
 import { useDispatch } from 'react-redux'
 import {getCategoriesAndDocumnets} from '../../utils/firebase/firebase.utils.js'
 
@@ -13,8 +13,9 @@ const Shop = () => {
 
     useEffect(() => {
         const getCategoryMap = async () => {
-            const categoryMap = await getCategoriesAndDocumnets()
-            dispatch(setCategoriesMap(categoryMap))
+            console.log('shop component effect')
+            const categoriesArray = await getCategoriesAndDocumnets()
+            dispatch(setCategories(categoriesArray))
         }
         getCategoryMap() 
     }, [])

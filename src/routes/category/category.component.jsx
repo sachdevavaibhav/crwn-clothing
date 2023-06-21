@@ -7,10 +7,12 @@ import ProductsCard from "../../components/products-card/products-card.component
 
 const Category = () => {
     const { category } = useParams()
+    console.log('render/re-rendering category component', category)
     const categoriesMap = useSelector(selectCategoriesMap)
     const [products, setProducts] = useState(categoriesMap[category])
 
     useEffect(() => {
+        console.log('effect fired calling setProducts', products, categoriesMap)
         setProducts(categoriesMap[category])
     }, [category, categoriesMap])
     return (
